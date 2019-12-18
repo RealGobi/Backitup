@@ -10,7 +10,6 @@ const Recipe = require('../../models/Recipe');
 // @access  Public
 router.get('/', (req, res) => {
   Recipe.find()
-    .sort({ date: -1 })
     .then(recipe => res.json(recipe));
 });
 
@@ -19,8 +18,18 @@ router.get('/', (req, res) => {
 // @access  Private
 router.post('/', auth, (req, res) => {
   const newItem = new Recipe({
-    name: req.body.name,
-    info: req.body.info
+    _id: new mongoose.Types.ObjectId(),
+    title: req.body.title,
+    description: req.body.description,
+    category1: req.body.category1,
+    category2: req.body.category2,
+    imageLink: req.body.imageLink,
+    time: req.body.time,
+    ingredients: req.body.ingredients,
+    instructions: req.body.instructions,
+    allergy: req.body.allergy,
+    rating: req.body.rating,
+    foodType: req.body.foodType,
   });
 
   newItem.save().then(recipe => res.json(recipe));

@@ -16,7 +16,7 @@ const db = config.get('mongoURI');
 // Connect to Mongo
 
 mongoose
-.connect(db, {
+.connect('mongodb+srv://dinner:' + process.env.db_pass + '@letdodinner-d3sve.mongodb.net/test?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true

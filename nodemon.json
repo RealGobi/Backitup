@@ -1,0 +1,6 @@
+{
+    "env": {
+        "db_pass": "mat",
+        "jwt_key": "KKND"
+    }
+}
