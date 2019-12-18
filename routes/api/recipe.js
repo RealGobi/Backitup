@@ -3,11 +3,12 @@ const router = express.Router();
 const auth = require('../../middleware/auth');
 
 // Recipe Model
-const Recipe = require('../../models/Recipe');
+const Recipe = require('../../models/recipes');
 
 // @route   GET api/Recipe
 // @desc    Get All Recipe
 // @access  Public
+
 router.get('/', (req, res) => {
   Recipe.find()
     .then(recipe => res.json(recipe));
