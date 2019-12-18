@@ -3,13 +3,14 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
+
 // User Model
 
 const User = require('../../models/User');
 
 // @route POST api/users
 // @desc register new user
-//@access Public
+//@access All
 
 router.post('/', (req, res) => {
     const { name, email, password, foodType } = req.body;

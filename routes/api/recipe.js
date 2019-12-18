@@ -7,7 +7,7 @@ const Recipe = require('../../models/recipes');
 
 // @route   GET api/Recipe
 // @desc    Get All Recipe
-// @access  Public
+// @access  All
 
 router.get('/', (req, res) => {
   Recipe.find()
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 // @route   POST api/Recipe
 // @desc    Create An Recipe
-// @access  Private
+// @access  Auth
 router.post('/', auth, (req, res) => {
   const newItem = new Recipe({
     _id: new mongoose.Types.ObjectId(),
@@ -38,7 +38,8 @@ router.post('/', auth, (req, res) => {
 
 // @route   DELETE api/recipe/:id
 // @desc    Delete A recipe
-// @access  Private
+// @access  Auth
+
 router.delete('/:id', auth, (req, res) => {
   Recipe.findById(req.params.id)
     .then(recipe => recipe.remove().then(() => res.json({ success: true })))

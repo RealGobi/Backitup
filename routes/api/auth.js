@@ -12,7 +12,7 @@ const User = require('../../models/User');
 
 // @route POST api/auth
 // @desc register auth user
-//@access Public
+//@access All
 
 router.post('/', (req, res) => {
     const {email, password } = req.body;
@@ -57,7 +57,7 @@ router.post('/', (req, res) => {
 
 // @route GET api/auth/user
 // @desc register auth user
-//@access Privet
+//@access Auth
 
 router.get('/user', auth, (req,res) => {
     User.findById(req.user.id)
