@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const config = require('config');
 const jwt = require('jsonwebtoken');
+const mongoose = require("mongoose");
+
 
 // User Model
 
@@ -25,6 +27,7 @@ router.post('/', (req, res) => {
         if(user) return res.status(400).json({msg:'Användare redan registrerad.'});
 
         const newUser = new User({
+            _id: new mongoose.Types.ObjectId(),
             name,
             email,
             password,
@@ -42,14 +45,14 @@ router.post('/', (req, res) => {
                         {
                             id: user.id
                         },
-                        config.get('jwtSecret'),
+                        process.env.jwt_key,
                         { expiresIn: 3600 },
                         (err, token) => {
                             if(err) throw err;
                             res.json({
                                 token,
                                 user: {
-                                    id: user.id,
+                                    id: user._id,
                                     name: user.name,
                                     email: user.email,
                                     foodType: user.foodType

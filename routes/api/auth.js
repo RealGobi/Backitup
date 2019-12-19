@@ -59,11 +59,10 @@ router.post('/', (req, res) => {
                                     foodType: user.foodType
                                 }
                             })
+                            console.log(user);   
                         }
                     )
                 })
-
-
         })
 });
 

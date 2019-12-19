@@ -4,7 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-nodemon.json
 # testing
 /coverage
 
@@ -12,6 +11,7 @@ nodemon.json
 /build
 
 # misc
+nodemon.json
 .DS_Store
 .env.local
 .env.development.local
