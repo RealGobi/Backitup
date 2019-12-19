@@ -1,3 +1,3 @@
 # Backitup
 New backEnd to LetsDoDinner
-yarn server
+To start hit - yarn server
