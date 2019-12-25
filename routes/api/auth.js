@@ -56,7 +56,8 @@ router.post('/', (req, res) => {
                                     id: user.id,
                                     name: user.name,
                                     email: user.email,
-                                    foodType: user.foodType
+                                    foodType: user.foodType,
+                                    isAdmin: user.isAdmin,
                                 }
                             })
                             console.log(user);   

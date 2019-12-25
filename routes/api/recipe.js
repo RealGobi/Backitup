@@ -4,6 +4,7 @@ const auth = require('../../middleware/auth');
 
 // Recipe Model
 const Recipe = require('../../models/recipes');
+const mongoose = require('mongoose');
 
 // @route   GET api/Recipe
 // @desc    Get All Recipe
