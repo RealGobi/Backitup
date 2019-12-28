@@ -52,9 +52,9 @@ router.delete('/:id', auth, (req, res) => {
 // @desc    Edit An Recipe
 // @access  Auth
 
-router.patch('/:id', auth, (req, res) => {
+router.put('/:id', auth, (req, res) => {
   Recipe.findById(req.params.id)
-    .then(recipe => recipe.patch().then(() => res.json({ success: true })))
+    .then(recipe => recipe.put().then(() => res.json({ success: true })))
     .catch(err => res.status(404).json({ success: false }));
 });
 
