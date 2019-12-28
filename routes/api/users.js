@@ -68,13 +68,4 @@ router.post('/', (req, res) => {
 });
 
 
-// @route PUT api/users
-// @desc change foodtype on user
-//@access user
-
-router.put('/', (req, res) => {
-    (User.findAndUpdate({ _id: req.body._id }), req.body)
-});
-
-
 module.exports = router;
