@@ -83,14 +83,12 @@ router.get('/user', auth, (req, res) => {
 // @desc change foodtype on user
 //@access user
 
-router.put('/user', (req, res, next) => {
-    User.findByIdAndUpdate({ _id: req.body, 
-        function (err, post) {
-            if (err) return next(err);
-            res.json({                
-                foodType: user.foodType,  
-            })
-        },
+
+router.get('/user', auth, (req, res) => {
+    User.findByIdAndUpdate(req.user.id, req.body).then(function () {
+            User.findOne({_id: req.params.id}).then(function(foodType){
+            res.send(foodType);
+        })
     });
 });
 
