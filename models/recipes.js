@@ -12,7 +12,7 @@ const recipeSchema = mongoose.Schema({
     instructions: { type: Array, required: true },
     allergy: { type: Number, required: false },
     rating: { type: Number, required: false },
-    foodType: { type: String, required: false }
+    foodType: { type: Number, required: false }
 });
 
 module.exports = mongoose.model('Recipe', recipeSchema);

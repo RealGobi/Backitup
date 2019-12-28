@@ -47,4 +47,16 @@ router.delete('/:id', auth, (req, res) => {
     .catch(err => res.status(404).json({ success: false }));
 });
 
+
+// @route   PATCH api/Recipe
+// @desc    Edit An Recipe
+// @access  Auth
+
+router.put('/:id', auth, (req, res) => {
+  Recipe.findById(req.params.id)
+    .then(recipe => recipe.put().then(() => res.json({ success: true })))
+    .catch(err => res.status(404).json({ success: false }));
+});
+
+
 module.exports = router;

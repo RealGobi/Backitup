@@ -79,4 +79,20 @@ router.get('/user', auth, (req, res) => {
         .then(user => res.json(user))
 })
 
+
+// @route PUT api/users
+// @desc change foodtype on user
+//@access user
+
+router.put('/user', (req, res, next) => {
+    User.findByIdAndUpdate({ _id: req.body, 
+        function (err, post) {
+            if (err) return next(err);
+            res.json({                
+                foodType: user.foodType,  
+            })
+        },
+    });
+});
+
 module.exports = router;
