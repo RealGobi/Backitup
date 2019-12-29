@@ -85,12 +85,12 @@ router.get('/user', auth, (req, res) => {
 //@access user
 
 
-router.get('/user', auth, (req, res) => {
-    User.findByIdAndUpdate(req.user.id, req.body).then(function () {
-            User.findOne({_id: req.params.id}).then(function(foodType){
-            res.send(foodType);
-        })
-    });
-});
+router.put('/user/:id', auth, (req, res, next) => {
+    User.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
+        User.findOne({_id: req.params.id}).then(function(user){
+            res.send(user);
+        });
+    }).catch(next);
+})
 
 module.exports = router;

@@ -25,7 +25,8 @@ mongoose
 .connect('mongodb+srv://dinner:' + process.env.db_pass + '@letdodinner-d3sve.mongodb.net/test?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useCreateIndex: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 })
 .then(() => console.log('MongoDB Connected...'))
 .catch(err => console.log(err));
