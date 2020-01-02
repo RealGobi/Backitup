@@ -18,9 +18,25 @@ router.post('/', (req, res) => {
     const { name, email, password, foodType } = req.body;
 
     //  validation
-    if (!name || !email || !password || !foodType) {
+    if (!name || !email|| !password || !foodType) {
         return res.status(400).json({ msg: 'Fyll i alla fält.' });
     }
+
+    // email validation 
+    function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+      }
+
+      function validate() {
+        if (validateEmail(email)) {
+            return;
+        } else {
+            return res.status(400).json({ msg: 'Fyll i gilltlig e-post.'})
+    }
+}
+      validate(); 
+
     // finns användaren?
     User.findOne({ email })
         .then(user => {
